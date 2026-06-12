@@ -300,24 +300,24 @@ body {
 
 .char {
     white-space: pre-wrap;
-    padding: 0 !important;
-    margin: 0 !important;
-    font-weight: normal !important;
-    letter-spacing: 0 !important;
 }
 
 .char.correct {
-    color: #4CAF50 !important;
+    color: #4CAF50;
+    font-weight: bold;
 }
 
 .char.error {
-    color: white !important;
-    background-color: red !important;
+    color: white;
+    background-color: red;
+    border-radius: 3px;
+    padding: 0 2px;
 }
 
 .char.current {
-    background-color: black !important;
-    color: white !important;
+    background-color: #333;
+    color: white;
+    border-radius: 3px;
 }
 
 .progress-bar {
