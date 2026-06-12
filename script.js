@@ -6,10 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const baseH = 800;
         const scaleX = window.innerWidth / baseW;
         const scaleY = window.innerHeight / baseH;
-        const scale = Math.min(scaleX, scaleY) * 0.95; // 95% of screen
+        const scale = Math.min(scaleX, scaleY) * 0.98; // 98% of screen
         
         wrapper.style.transform = `scale(${scale})`;
-        wrapper.style.transformOrigin = 'center center';
+        wrapper.style.transformOrigin = 'top center';
+        
+        // Center it vertically if there is extra space
+        const scaledHeight = baseH * scale;
+        if (window.innerHeight > scaledHeight) {
+            wrapper.style.marginTop = `${(window.innerHeight - scaledHeight) / 2}px`;
+        } else {
+            wrapper.style.marginTop = '0px';
+        }
     }
     window.addEventListener('resize', resizeApp);
     resizeApp();
@@ -698,8 +706,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentIndex < characters.length) {
                 characters[currentIndex].classList.add('current');
                 
-                // Original scrolling (only if it was already there, but let's just use standard scrollIntoView block:nearest)
-                characters[currentIndex].scrollIntoView({ behavior: 'auto', block: 'nearest' });
+                // Centrado vertical manual del contenedor (avance hasta la mitad)
+                const container = characters[currentIndex].parentElement.parentElement; // typing-container
+                const charTop = characters[currentIndex].offsetTop;
+                const charHeight = characters[currentIndex].offsetHeight;
+                const containerHeight = container.clientHeight;
+                
+                let targetScroll = charTop - (containerHeight / 2) + (charHeight / 2);
+                if (targetScroll < 0) targetScroll = 0;
+                container.scrollTo({ top: targetScroll, behavior: 'smooth' });
                 
                 updateKeyboardHighlight();
             } else {

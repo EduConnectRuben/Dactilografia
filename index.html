@@ -16,13 +16,11 @@
     <meta name="theme-color" content="#a87b00">
     <link rel="apple-touch-icon" href="instalar/icon-192.png">
     
-    <link rel="stylesheet" href="style.css?v=21">
-    
-    <!-- PWA y Botón de Instalar (Carpeta instalar) -->
+    <link rel="stylesheet" href="style.css?v=25">
     <script src="instalar/pwa.js?v=2" defer></script>
 </head>
 <body>
-    <div id="app-wrapper" style="width: 100%; max-width: 1200px; height: 100vh; max-height: 800px; position: relative; display: flex; flex-direction: column; margin: 0 auto;">
+    <div id="app-wrapper" style="width: 1200px; height: 800px; position: relative; display: flex; flex-direction: column; margin: 0 auto; transform-origin: top center;">
     <!-- VIEW 1: Main Menu -->
     <div id="view-menu" class="view active">
           <div class="top-row" style="display:flex; justify-content:space-between; align-items:center; padding: 0 20px;">
@@ -100,7 +98,11 @@
                 <span id="typing-nivel">NIVEL: 0</span>
                 <span id="typing-bloque">BLOQUE: 0</span>
             </div>
-            <button id="btn-close-typing" style="background: white; border: 2px solid red; color: red; font-weight:bold; cursor:pointer;">X</button>
+            <div style="display:flex; gap: 10px;">
+                <button id="btn-pause" style="background: white; border: 2px solid #555; font-weight:bold; cursor:pointer;">Pausa</button>
+                <button id="btn-restart-lesson" style="background: #2196F3; border: 2px solid white; color: white; font-weight:bold; cursor:pointer;">Reiniciar</button>
+                <button id="btn-close-typing" style="background: white; border: 2px solid red; color: red; font-weight:bold; cursor:pointer;">X</button>
+            </div>
         </div>
 
         <!-- Text Display -->
