@@ -10,14 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         wrapper.style.transform = `scale(${scale})`;
         wrapper.style.transformOrigin = 'top center';
-        
-        // Center it vertically if there is extra space
-        const scaledHeight = baseH * scale;
-        if (window.innerHeight > scaledHeight) {
-            wrapper.style.marginTop = `${(window.innerHeight - scaledHeight) / 2}px`;
-        } else {
-            wrapper.style.marginTop = '0px';
-        }
+        wrapper.style.marginTop = '0px';
     }
     window.addEventListener('resize', resizeApp);
     resizeApp();
