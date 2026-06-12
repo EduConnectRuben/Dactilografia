@@ -660,6 +660,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         setupTypingArea(fullText);
         showView(viewTyping);
+        setTimeout(scrollToActive, 100);
         hiddenInput.focus();
     }
 
@@ -674,6 +675,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(typingBloque) typingBloque.style.display = 'inline';
         
         setupTypingArea(text);
+        setTimeout(scrollToActive, 100);
         hiddenInput.value = '';
         hiddenInput.focus();
     }
@@ -783,15 +785,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentIndex < characters.length) {
                 characters[currentIndex].classList.add('current');
                 
-                // Centrado vertical manual del contenedor (avance hasta la mitad)
-                const container = characters[currentIndex].parentElement.parentElement; // typing-container
-                const charTop = characters[currentIndex].offsetTop;
-                const charHeight = characters[currentIndex].offsetHeight;
-                const containerHeight = container.clientHeight;
-                
-                let targetScroll = charTop - (containerHeight / 2) + (charHeight / 2);
-                if (targetScroll < 0) targetScroll = 0;
-                container.scrollTo({ top: targetScroll, behavior: 'smooth' });
+                scrollToActive();
                 
                 updateKeyboardHighlight();
             } else {
@@ -802,6 +796,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         hiddenInput.value = '';
     });
+
+    function scrollToActive() {
+        const activeSpan = textDisplay.querySelector('.current');
+        if (activeSpan) {
+            const containerHeight = typingContainer.clientHeight;
+            const activeTop = activeSpan.offsetTop;
+            typingContainer.scrollTop = activeTop - (containerHeight / 2) + 20;
+
+            const containerWidth = typingContainer.clientWidth;
+            const activeLeft = activeSpan.offsetLeft;
+            typingContainer.scrollLeft = activeLeft - (containerWidth / 2) + 20;
+        }
+    }
 
     function finishLesson() {
         isFinished = true;

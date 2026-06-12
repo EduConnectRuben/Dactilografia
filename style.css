@@ -374,6 +374,23 @@ body.dark-theme .typing-container {
 }
 
 /* USERS VIEW */
+.install-btn-pwa {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 1.8rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
 .users-container {
     flex: 1;
     display: flex;
