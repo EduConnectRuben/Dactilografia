@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mecaweb-v10';
+const CACHE_NAME = 'mecaweb-v11';
 const urlsToCache = [
   './',
   './index.html',
